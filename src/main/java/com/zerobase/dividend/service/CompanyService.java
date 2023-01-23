@@ -1,5 +1,6 @@
 package com.zerobase.dividend.service;
 
+import com.zerobase.dividend.exception.impl.AlreadyExistCompanyException;
 import com.zerobase.dividend.exception.impl.NoCompanyException;
 import com.zerobase.dividend.model.Company;
 import com.zerobase.dividend.model.ScrapedResult;
@@ -34,7 +35,7 @@ public class CompanyService {
     public Company save(String ticker) {
         boolean exists = this.companyRepository.existsByTicker(ticker);
         if (exists) {
-            throw new RuntimeException("already exists ticker -> " + ticker);
+            throw new AlreadyExistCompanyException();
         }
 
         return this.storeCompanyAndDividend(ticker);
