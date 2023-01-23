@@ -40,13 +40,9 @@ public class FinanceService {
 
         // 3. 결과 조합 후 반환
         List<Dividend> dividends = dividendEntities.stream()
-                .map(e -> new Dividend(e.getDate(), e.getDividend()))
-                .collect(Collectors.toList());
+                                                    .map(e -> new Dividend(e.getDate(), e.getDividend()))
+                                                    .collect(Collectors.toList());
 
-        return new ScrapedResult(new Company(
-                company.getTicker(),
-                company.getName()),
-                dividends
-        );
+        return new ScrapedResult(new Company(company.getTicker(), company.getName()), dividends);
     }
 }

@@ -18,6 +18,7 @@ public class Dividend {
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     @JsonDeserialize(using = LocalDateDeserializer.class)
     private LocalDateTime date;
+
     private String dividend;
 
 }
